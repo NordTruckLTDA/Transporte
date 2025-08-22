@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transporte Chile-Bolivia</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #0d47a1; color: white; padding: 1rem; text-align: center; }
+    nav { display: flex; justify-content: center; background: #1976d2; }
+    nav a { color: white; padding: 1rem; text-decoration: none; }
+    nav a:hover { background: #1565c0; }
+    section { padding: 2rem; }
+    .timeline { display: flex; justify-content: space-between; margin-top: 2rem; }
+    .step { text-align: center; flex: 1; position: relative; }
+    .step:before { content: ''; position: absolute; top: 15px; left: 50%; width: 100%; height: 4px; background: #ccc; z-index: -1; }
+    .step:first-child:before { display: none; }
+    .circle { width: 30px; height: 30px; background: #ccc; border-radius: 50%; margin: auto; line-height: 30px; color: white; }
+    .active .circle { background: #4caf50; }
+    form { display: flex; flex-direction: column; max-width: 400px; margin: auto; }
+    form input, form textarea, form button { margin: 0.5rem 0; padding: 0.7rem; }
+    footer { background: #0d47a1; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TransChile-Bolivia</h1>
+    <p>“Llevamos tu carga más allá de la frontera”</p>
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Sobre nosotros</a>
+    <a href="#seguimiento">Seguimiento</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="inicio">
+    <h2>Bienvenido</h2>
+    <p>Somos una empresa chilena dedicada al transporte y exportación de mercancías hacia Bolivia. Seguridad, rapidez y confianza en cada envío.</p>
+  </section>
+
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+      <li>Transporte terrestre de carga completa y consolidada.</li>
+      <li>Gestión aduanera en frontera.</li>
+      <li>Seguimiento en tiempo real de envíos.</li>
+      <li>Rutas Santiago – Arica – La Paz – Santa Cruz.</li>
+    </ul>
+  </section>
+
+  <section id="nosotros">
+    <h2>Sobre nosotros</h2>
+    <p>Con más de 10 años en el rubro, ofrecemos soluciones logísticas confiables. Nuestro equipo está comprometido con la seguridad y puntualidad.</p>
+    <p><strong>Valores:</strong> Compromiso, transparencia y eficiencia.</p>
+  </section>
+
+  <section id="seguimiento">
+    <h2>Seguimiento de pedidos</h2>
+    <p>Ingrese su número de guía para conocer el estado de su carga.</p>
+    <input type="text" id="trackingInput" placeholder="Ej: 1234">
+    <button onclick="buscarTracking()">Buscar</button>
+
+    <div id="trackingResult"></div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form>
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo" required>
+      <textarea placeholder="Mensaje" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p>📍 Dirección: Santiago, Chile</p>
+    <p>📱 <a href="https://wa.me/56912345678" target="_blank">WhatsApp Directo</a></p>
+    <iframe src="https://maps.google.com/maps?q=santiago%20chile&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;"></iframe>
+  </section>
+
+  <footer>
+    <p>© 2025 TransChile-Bolivia. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function buscarTracking() {
+      const input = document.getElementById('trackingInput').value;
+      const result = document.getElementById('trackingResult');
+      result.innerHTML = '';
+
+      if (input === '1234') {
+        result.innerHTML = `
+          <h3>Estado del envío:</h3>
+          <div class="timeline">
+            <div class="step active"><div class="circle">1</div><p>En bodega Santiago</p></div>
+            <div class="step active"><div class="circle">2</div><p>En tránsito a frontera</p></div>
+            <div class="step"><div class="circle">3</div><p>Llegó a Arica</p></div>
+            <div class="step"><div class="circle">4</div><p>En aduana boliviana</p></div>
+            <div class="step"><div class="circle">5</div><p>En reparto</p></div>
+          </div>`;
+      } else if (input === '5678') {
+        result.innerHTML = `
+          <h3>Estado del envío:</h3>
+          <div class="timeline">
+            <div class="step active"><div class="circle">1</div><p>En bodega Santiago</p></div>
+            <div class="step active"><div class="circle">2</div><p>En tránsito a frontera</p></div>
+            <div class="step active"><div class="circle">3</div><p>Llegó a Arica</p></div>
+            <div class="step"><div class="circle">4</div><p>En aduana boliviana</p></div>
+            <div class="step"><div class="circle">5</div><p>En reparto</p></div>
+          </div>`;
+      } else {
+        result.innerHTML = `<p style="color:red;">Número de guía no encontrado. Intente con 1234 o 5678 (demo).</p>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
